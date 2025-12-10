@@ -5,39 +5,39 @@ sidebar:
     order: 1
 ---
 
-## Wayland Support
-
-Vesktop runs as an X11 application by default. You can override this behaviour.
-
--   If you are using Flatpak, open [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) and deny the `X11 windowing system` permission for Vesktop.
--   If you are not using Flatpak, you can opt into Wayland by running vesktop with the `--ozone-platform-hint=auto` flag. To make this permanent, see [Making Command line flags permanent](#making-command-line-flags-permanent).
-
 ## GNOME Tray Icon
 
 To enable the tray icon on GNOME, install the [AppIndicator and KStatusNotifierItem Support extension](https://extensions.gnome.org/extension/615/appindicator-support/)
 
-## Making Command Line Flags Permanent
+## Making Command-Line Flags Permanent
 
-Locate Vesktop's `.desktop` file.
+Locate Vesktop's `.desktop` file. It should usually be in `/usr/share/applications/vesktop.desktop`.
+
+If you cannot find it, use:
 
 ```sh
-locate -ib vesktop.desktop
+find / -name vesktop.desktop 2>/dev/null
 ```
 
-It should usually be in `/usr/share/applications/vesktop.desktop`.
-
-Open it with a text editor and add your flags to the `Exec` line, after the binary path and before the `%U` (if it exists).
-
-```
-Exec=/usr/bin/vesktop --ozone-platform-hint=auto %U
+Then, copy it to `~/.local/share/applications`:
+```sh
+cp /usr/share/applications/vesktop.desktop ~/.local/share/applications/`
 ```
 
-## Enable Middle Click Auto Scroll
+Afterwards, open your local copy with a text editor and edit the `Exec=` line.
 
-To enable middle click auto scroll, run Vesktop with the `--enable-blink-features=MiddleClickAutoscroll` flag. To make this permanent, see [Making Command line flags permanent](#making-command-line-flags-permanent).
+For example:
+```sh
+Exec=vesktop --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE,VaapiOnNvidiaGPUs
+```
+
+## Enable Middle-Click Auto-Scroll
+
+To enable middle-click auto-scroll, run Vesktop with the `--enable-blink-features=MiddleClickAutoscroll` flag. To make this permanent, see [Making Command-Line Flags Permanent](#making-command-line-flags-permanent).
 
 By default, this will conflict with the default Linux behaviour of pasting the clipboard contents when middle clicking. To change this behaviour:
 
--   If you are running Vesktop in X11 (default), install and run [XMousePasteBlock](https://github.com/milaq/XMousePasteBlock).
--   If you are running Vesktop in Wayland, you might be able to disable it in your Desktop settings.
-    On GNOME, you can disable it in [Gnome Tweaks](https://wiki.gnome.org/Apps/Tweaks).
+- If you are running Vesktop in X11, install and configure [XMousePasteBlock](https://github.com/milaq/XMousePasteBlock).
+- If you are running Vesktop in Wayland (the default option), you might be able to disable it in your desktop environment settings.
+  - On GNOME, you can disable it with [Gnome Tweaks](https://wiki.gnome.org/Apps/Tweaks).
+  - On KDE Plasma, you can disable it via the "General Behavior" tab in the System Settings app. ("Middle-click: [ ] Pastes selected text")
