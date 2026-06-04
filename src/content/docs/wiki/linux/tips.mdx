@@ -16,6 +16,14 @@ Vesktop runs as an X11 application by default. You can override this behaviour.
 
 To enable the tray icon on GNOME, install the [AppIndicator and KStatusNotifierItem Support extension](https://extensions.gnome.org/extension/615/appindicator-support/)
 
+
+## Using Vesktop on a VPN
+
+The linux vesktop client won't launch if you're on a vpn like mullvad, a window appears stating there's a vesktop network error and links to the vesktop status page, but this is just a client/server linux incompatibility issue.  Adding one of theses flags to vesktop solves the issue, darwin seems to work better for endeavorOS, windows for nixos, etc, so if you have UI or feature issues once Vesktop launches try the other.
+
+`--user-agent-os 'darwin'`
+`--user-agent-os 'windows'`
+
 ## Making Command Line Flags Permanent
 
 Locate Vesktop's `.desktop` file.
