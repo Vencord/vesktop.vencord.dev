@@ -5,12 +5,12 @@ sidebar:
     order: 1
 ---
 
-## Wayland Support
+## Run in XWayland mode
 
-Vesktop runs as an X11 application by default. You can override this behaviour.
+Vesktop runs as a Wayland application by default on Wayland sessions. You can override this behaviour.
 
--   If you are using Flatpak, open [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) and deny the `X11 windowing system` permission for Vesktop.
--   If you are not using Flatpak, you can opt into Wayland by running vesktop with the `--ozone-platform-hint=auto` flag. To make this permanent, see [Making Command line flags permanent](#making-command-line-flags-permanent).
+-   If you are using Flatpak, open [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) , scroll to "Environment" and add the variable `XDG_SESSION_TYPE=x11`.
+-   If you are not using Flatpak, you can opt into X11 by running vesktop with the `--ozone-platform=x11` flag. To make this permanent, see [Making Command line flags permanent](#making-command-line-flags-permanent).
 
 ## GNOME Tray Icon
 
@@ -29,7 +29,7 @@ It should usually be in `/usr/share/applications/vesktop.desktop`.
 Open it with a text editor and add your flags to the `Exec` line, after the binary path and before the `%U` (if it exists).
 
 ```
-Exec=/usr/bin/vesktop --ozone-platform-hint=auto %U
+Exec=/usr/bin/vesktop --ozone-platform=x11 %U
 ```
 
 ## Enable Middle Click Auto Scroll
