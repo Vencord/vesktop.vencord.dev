@@ -1,0 +1,28 @@
+---
+import FlathubBadge from "~/assets/flathub-badge.svg";
+import TerraBadge from "~/assets/terra-badge.svg";
+---
+
+<div>
+    <a href="https://flathub.org/apps/dev.vencord.Vesktop">
+        <img src={FlathubBadge.src} alt="Download on Flathub" />
+    </a>
+    <a href="https://terrapkg.com/">
+        <img src={TerraBadge.src} alt="Download on Terra" />
+    </a>
+</div>
+
+<style>
+    div {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    img {
+        height: 80px;
+        width: auto;
+        flex-shrink: 0;
+    }
+</style>

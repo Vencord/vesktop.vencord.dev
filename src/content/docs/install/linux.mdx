@@ -6,6 +6,7 @@ tableOfContents: false
 import { Aside, LinkButton } from "@astrojs/starlight/components";
 
 import IconHeader from "~/components/IconHeader.astro";
+import LinuxButtons from "~/components/LinuxButtons.astro";
 
 import UbuntuIcon from "~/assets/ubuntu.svg";
 import FedoraIcon from "~/assets/fedora.svg";
@@ -13,12 +14,25 @@ import ArchIcon from "~/assets/archlinux.svg";
 import AppImageIcon from "~/assets/appimage.svg";
 import SteamIcon from "~/assets/steam.svg";
 
-<Aside type="note">
-    While the Flatpak is convenient, it comes with some limitations such as dysfunctional Rich Presence. We recommend
-    using native packages for the best experience.
+<Aside type="note" title="Read this before installing">
+    If possible, **we recommend using native packages instead of the Flatpak**!
+
+    This is because the Flatpak version has various limitations:
+    - Rich presence does not properly work
+    - You won't be able to drag & drop files unless you grant the Flatpak access to all files
+
+    Don't worry, all native packages except the tarball include automatic updates.
+
+    ---
+
+    ##### Unsure whether to download the x64 or arm64 version?
+    - Open a terminal and run `uname -m`.
+    - If it outputs `x86_64`, download the x64 version.
+    - If it outputs `aarch64`, download the arm64 version.
+
 </Aside>
 
-[![Download on Flathub](https://dl.flathub.org/assets/badges/flathub-badge-en.svg)](https://flathub.org/apps/dev.vencord.Vesktop)
+<LinuxButtons />
 
 <IconHeader tag="h4" iconUrl={SteamIcon.src}>
     SteamOS
@@ -27,35 +41,38 @@ import SteamIcon from "~/assets/steam.svg";
 Open the Discover app, search for Vesktop and install it. To run it in game mode, add it as a non-steam game.
 
 <IconHeader tag="h4" iconUrl={UbuntuIcon.src}>
-    deb (Debian / Ubuntu)
+    Debian / Ubuntu / Pop!_OS / Linux Mint
 </IconHeader>
 
-Download the right deb package and double click it to install.
+Download the right deb package and double click it to install. This package supports auto-updates.
 
 <LinkButton href="https://vencord.dev/download/vesktop/amd64/deb">x64 Download</LinkButton>
 <LinkButton href="https://vencord.dev/download/vesktop/arm64/deb">arm64 Download</LinkButton>
 
 <IconHeader tag="h4" iconUrl={FedoraIcon.src}>
-    rpm (Fedora / Red Hat)
+    Fedora / Nobara / Ultramarine
 </IconHeader>
 
-Download the right rpm package and double click it to install.
+Download the right rpm package and double click it to install. This package supports auto-updates.
 
 <LinkButton href="https://vencord.dev/download/vesktop/amd64/rpm">x64 Download</LinkButton>
 <LinkButton href="https://vencord.dev/download/vesktop/arm64/rpm">arm64 Download</LinkButton>
 
 <IconHeader tag="h4" iconUrl={ArchIcon.src}>
-    AUR (Arch Linux)
+    AUR (Arch Linux / CachyOS / Omarchy / Manjaro)
 </IconHeader>
 
-<LinkButton href="https://aur.archlinux.org/packages/vesktop">vesktop</LinkButton>
+For most users, we recommend using **vesktop-bin**. Only use **vesktop-git** if you want to build the latest development version from source.\
+If you are unsure how to install from the AUR, we suggest [**yay**](https://jguer.github.io/yay/) or [**paru**](https://github.com/morganamilo/paru#installation).
+
+<LinkButton href="https://aur.archlinux.org/packages/vesktop-bin">vesktop-bin</LinkButton>
 <LinkButton href="https://aur.archlinux.org/packages/vesktop-git">vesktop-git</LinkButton>
 
 <IconHeader tag="h4" iconUrl={AppImageIcon.src}>
     AppImage (Universal)
 </IconHeader>
 
-See [this guide](https://discourse.appimage.org/t/how-to-run-an-appimage/80) for how to run an AppImage.
+See [this guide](https://discourse.appimage.org/t/how-to-run-an-appimage/80) for how to run an AppImage. The AppImage supports auto-updates.
 
 <LinkButton href="https://vencord.dev/download/vesktop/amd64/appimage">x64 Download</LinkButton>
 <LinkButton href="https://vencord.dev/download/vesktop/arm64/appimage">arm64 Download</LinkButton>
@@ -64,7 +81,7 @@ See [this guide](https://discourse.appimage.org/t/how-to-run-an-appimage/80) for
     tarball (Portable)
 </IconHeader>
 
-To run the portable version, extract it into a folder and run the `vesktop` binary inside it. Note that all files are needed, not just the binary!
+To run the portable version, extract it into a folder and run the **`vesktop`** binary inside it. Note that all files are needed, not just the binary!
 
 <LinkButton href="https://vencord.dev/download/vesktop/amd64/tar">x64 Download</LinkButton>
 <LinkButton href="https://vencord.dev/download/vesktop/arm64/tar">arm64 Download</LinkButton>
