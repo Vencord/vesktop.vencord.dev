@@ -44,7 +44,7 @@ export default defineConfig({
                         { label: "Overview", slug: "wiki" },
                         {
                             label: "Linux",
-                            autogenerate: { directory: "wiki/linux" }
+                            items: [{ autogenerate: { directory: "wiki/linux" } }]
                         }
                     ]
                 }
